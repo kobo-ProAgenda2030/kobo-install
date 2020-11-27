@@ -31,10 +31,18 @@ class Setup:
 
             # clone project
             git_command = [
-                'git', 'clone', 'https://github.com/kobotoolbox/kobo-docker',
+                'git', 'clone', 'https://github.com/NexionBolivia/kobo-docker',
                 dict_['kobodocker_path']
             ]
             CLI.run_command(git_command, cwd=os.path.dirname(
+                dict_['kobodocker_path']))
+
+            # change branch
+            git_checkout_command = [
+                'git', 'checkout', 'dev/frontend',
+                dict_['kobodocker_path']
+            ]
+            CLI.run_command(git_checkout_command, cwd=os.path.dirname(
                 dict_['kobodocker_path']))
 
             shutil.move(os.path.join(tmp_dirpath, Config.UNIQUE_ID_FILE),
